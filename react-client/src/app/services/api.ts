@@ -16,11 +16,11 @@ const baseQuery = fetchBaseQuery({
   },
 })
 
-const baseQueryWithRetry = retry(baseQuery, {maxRetries: 1})
+const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 })
 
 export const api = createApi({
-    reducerPath: 'splitApi', 
-    baseQuery: baseQueryWithRetry,
-    refetchOnMountOrArgChange: true,
-    endpoints: () => ({}),
+  reducerPath: "splitApi",
+  baseQuery: baseQueryWithRetry,
+  refetchOnMountOrArgChange: true,
+  endpoints: () => ({}),
 })
