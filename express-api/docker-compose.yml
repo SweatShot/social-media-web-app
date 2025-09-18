@@ -1,0 +1,16 @@
+services:
+  express-app:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "mongodb://admin:admin@db:27017/mydatabase?authSource=admin&directConnection=true"
+  db:
+    image: prismagraphql/mongo-single-replica:4.4.3-bionic
+    ports:
+      - '27017:27017'
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
