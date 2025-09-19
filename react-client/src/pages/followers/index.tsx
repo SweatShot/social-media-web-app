@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react"
 
 export const Followers = () => {
-  return (
-    <div>Followers</div>
-  )
+  return <div>Followers</div>
 }
