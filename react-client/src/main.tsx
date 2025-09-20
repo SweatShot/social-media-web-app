@@ -14,6 +14,7 @@ import { CurrentPost } from "./pages/current-post"
 import { UserProfile } from "./pages/user-profile"
 import { Followers } from "./pages/followers"
 import { Following } from "./pages/following"
+import { AuthGuard } from "./features/user/authGuard"
 
 const container = document.getElementById("root")
 
@@ -28,25 +29,25 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Posts />
+        element: <Posts />,
       },
       {
         path: "posts/:id",
-        element: <CurrentPost />
+        element: <CurrentPost />,
       },
       {
         path: "users/:id",
-        element: <UserProfile />
+        element: <UserProfile />,
       },
       {
         path: "followers",
-        element: <Followers />
+        element: <Followers />,
       },
       {
         path: "following",
-        element: <Following />
+        element: <Following />,
       },
-    ]
+    ],
   },
 ])
 
@@ -58,7 +59,9 @@ if (container) {
       <Provider store={store}>
         <HeroUIProvider>
           <ThemeProvider>
-            <RouterProvider router={router} />
+            <AuthGuard>
+              <RouterProvider router={router} />
+            </AuthGuard>
           </ThemeProvider>
         </HeroUIProvider>
       </Provider>
