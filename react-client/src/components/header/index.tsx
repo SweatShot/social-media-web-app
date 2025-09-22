@@ -6,18 +6,17 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  useSelect,
 } from "@heroui/react"
 import { FaRegMoon } from "react-icons/fa"
 import { LuSunMedium } from "react-icons/lu"
+import { useDispatch, useSelector } from "react-redux"
 import { logout, selectIsAuthenticated } from "../../features/user/userSlice"
-import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { CiLogout } from "react-icons/ci"
 
 export const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)
-  const isAuthenticated = useSelect(selectIsAuthenticated)
+  const isAuthenticated = useSelector(selectIsAuthenticated)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -26,6 +25,7 @@ export const Header = () => {
     localStorage.removeItem("token")
     navigate("/auth")
   }
+
   return (
     <Navbar>
       <NavbarBrand>
