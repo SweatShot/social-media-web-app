@@ -5,6 +5,7 @@ services:
       - '3000:3000'
     depends_on:
       - db
+      - react-app
     environment:
       DATABASE_URL: "mongodb://admin:admin@db:27017/mydatabase?authSource=admin&directConnection=true"
   db:
@@ -14,3 +15,7 @@ services:
     environment: 
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
+  react-app:
+    build: ../react-client
+    ports: 
+      - '80:80'
