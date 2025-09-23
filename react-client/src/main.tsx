@@ -1,12 +1,12 @@
-import { StrictMode } from "react"
+import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 import App from "./App"
 import { store } from "./app/store"
 import "./index.css"
-import { HeroUIProvider } from "@heroui/react"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { ThemeProvider } from "./components/theme-provider/index"
+import { HeroUIProvider } from "@heroui/react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { ThemeProvider } from "./components/theme-provider"
 import { Auth } from "./pages/auth"
 import { Layout } from "./components/layout"
 import { Posts } from "./pages/posts"
@@ -20,52 +20,52 @@ const container = document.getElementById("root")
 
 const router = createBrowserRouter([
   {
-    path: "/auth",
-    element: <Auth />,
+    path: '/auth',
+    element: <Auth />
   },
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
         path: "",
-        element: <Posts />,
+        element: <Posts />
       },
       {
         path: "posts/:id",
-        element: <CurrentPost />,
+        element: <CurrentPost />
       },
       {
         path: "users/:id",
-        element: <UserProfile />,
+        element: <UserProfile />
       },
       {
         path: "followers",
-        element: <Followers />,
+        element: <Followers />
       },
       {
         path: "following",
-        element: <Following />,
+        element: <Following />
       },
-    ],
-  },
+    ]
+  }
 ])
 
 if (container) {
   const root = createRoot(container)
 
   root.render(
-    <StrictMode>
+    <React.StrictMode>
       <Provider store={store}>
         <HeroUIProvider>
           <ThemeProvider>
-            <AuthGuard>
-              <RouterProvider router={router} />
+            <AuthGuard >
+              <RouterProvider router={ router } />
             </AuthGuard>
           </ThemeProvider>
         </HeroUIProvider>
       </Provider>
-    </StrictMode>,
+    </React.StrictMode>,
   )
 } else {
   throw new Error(
