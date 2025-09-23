@@ -11,6 +11,8 @@ Frontend на **React + Vite**, backend на **Express + MongoDB**, всё уп�
 - ⚛️ React 18 (Vite, TypeScript)
 - 🎨 Tailwind CSS v4 + HeroUI
 - 🛠 Redux Toolkit + RTK Query
+- 🛠 React Hook Form
+- ⚛️ HeroUI
 - 🌙 Темная / светлая тема
 - 🔐 JWT-авторизация
 
